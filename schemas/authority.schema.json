@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/andra884/reimagined-memory/blob/master/schemas/authority.schema.json",
+  "title": "Authority record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "authority_type",
+    "domains",
+    "precedence",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_type": {
+      "type": "string",
+      "enum": [
+        "external_binding",
+        "internal_policy",
+        "owner_decision",
+        "source_of_record",
+        "curated_reference",
+        "inference"
+      ]
+    },
+    "domains": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "precedence": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Lower numbers are preferred when sources apply to the same claim; scope and applicability come first."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "proposed",
+        "revoked"
+      ]
+    },
+    "effective_from": {
+      "type": "string",
+      "format": "date"
+    },
+    "effective_until": {
+      "type": "string",
+      "format": "date"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "delegates_to": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "locator": {
+      "type": "string"
+    }
+  }
+}

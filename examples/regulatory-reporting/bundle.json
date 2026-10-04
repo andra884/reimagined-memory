@@ -1,0 +1,71 @@
+{
+  "bundle_id": "example.regulatory-reporting.governance",
+  "bundle_version": "0.1.0",
+  "memories": [
+    {
+      "id": "mem.metric-publication-baseline",
+      "kind": "rule",
+      "statement": "Illustrative baseline: publish a governed metric only when its owner and definition are recorded.",
+      "status": "asserted",
+      "scope": {
+        "domain": "reporting-governance",
+        "subjects": [
+          "governed-metric"
+        ],
+        "applies_to": "Example bundle only"
+      },
+      "created_at": "2026-10-04T00:00:00Z",
+      "evidence_ids": [
+        "ev.example-governance-note"
+      ],
+      "authority_id": "auth.example-owner-decision",
+      "tags": [
+        "illustrative",
+        "semantic-layer"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev.example-governance-note",
+      "source_kind": "illustrative",
+      "source_name": "Synthetic example note",
+      "locator": "bundle://example/regulatory-reporting#metric-publication-baseline",
+      "supports": [
+        "mem.metric-publication-baseline"
+      ],
+      "captured_at": "2026-10-04T00:00:00Z",
+      "verification": "unverified",
+      "notes": "Synthetic demonstration record; not a real policy or source document."
+    }
+  ],
+  "authorities": [
+    {
+      "id": "auth.example-owner-decision",
+      "name": "Example bundle owner decision",
+      "authority_type": "owner_decision",
+      "domains": [
+        "reporting-governance"
+      ],
+      "precedence": 3,
+      "status": "proposed",
+      "owner": "Example only",
+      "locator": "bundle://example/regulatory-reporting"
+    }
+  ],
+  "extensions": {
+    "ev": {
+      "invariants": [
+        {
+          "id": "inv.no-unsupported-authority",
+          "statement": "Do not label an illustrative or unverified source as approved policy.",
+          "severity": "error"
+        }
+      ],
+      "cases": [
+        "eval.no-unsupported-authority",
+        "eval.surface-missing-evidence"
+      ]
+    }
+  }
+}
