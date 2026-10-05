@@ -64,7 +64,11 @@
       ],
       "cases": [
         "eval.no-unsupported-authority",
-        "eval.surface-missing-evidence"
+        "eval.surface-missing-evidence",
+        "eval.conflict-is-visible",
+        "eval.reject-stale-evidence",
+        "eval.require-provenance",
+        "eval.block-invariant-violation"
       ]
     }
   }
